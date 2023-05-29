@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="page-header">
+    <div class="row align-items-center">
+        <div class="col">
+            <h3 class="page-title">Update Session</h3>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="subjects.html">Session</a></li>
+                <li class="breadcrumb-item active">Update Session</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Session year Details</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'update_session' %}">
+                    {% csrf_token %}
+                    {% include 'includes/messages.html' %}
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">Session Start</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" name="session_start" value="{{session.session_start}}">
+                            <input type="text" class="form-control" name="session_id" value="{{session.id}}" hidden>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">Session End</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" name="session_end" value="{{session.session_end}}">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
